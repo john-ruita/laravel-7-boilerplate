@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ appName() }} | @yield('title')</title>
     <meta name="description" content="@yield('meta_description', appName())">
-    <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
+    <meta name="author" content="@yield('meta_author', 'John Ruita')">
     @yield('meta')
 
     @stack('before-styles')
@@ -14,28 +14,38 @@
     <livewire:styles />
     @stack('after-styles')
 </head>
-<body class="c-app">
+<body class="hold-transition sidebar-mini">
     @include('backend.includes.sidebar')
+    @include('backend.includes.header')
 
-    <div class="c-wrapper c-fixed-components">
-        @include('backend.includes.header')
-        @include('includes.partials.read-only')
-        @include('includes.partials.logged-in-as')
-        @include('includes.partials.announcements')
-
-        <div class="c-body">
-            <main class="c-main">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            @include('includes.partials.read-only')
+            @include('includes.partials.logged-in-as')
+            @include('includes.partials.announcements')
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">@yield('title')</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            @include('backend.includes.partials.breadcrumbs')
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <main class="content">
                 <div class="container-fluid">
                     <div class="fade-in">
                         @include('includes.partials.messages')
                         @yield('content')
-                    </div><!--fade-in-->
-                </div><!--container-fluid-->
+                    </div>
+                </div>
             </main>
-        </div><!--c-body-->
-
+        </div>
         @include('backend.includes.footer')
-    </div><!--c-wrapper-->
+    </div>
 
     @stack('before-scripts')
     <script src="{{ mix('js/manifest.js') }}"></script>
