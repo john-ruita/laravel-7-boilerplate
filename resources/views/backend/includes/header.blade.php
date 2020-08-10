@@ -8,13 +8,9 @@
         </li>
         @if(config('boilerplate.locale.status') && count(config('boilerplate.locale.languages')) > 1)
             <li class="nav-item dropdown">
-            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-link" id="navbarDropdownLanguageLink" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     <span class="d-md-down-none">@lang('Language') ({{ strtoupper(__(getLocaleName(app()->getLocale()))) }})</span>
                 </a>
-
-                @include('includes.partials.lang')
-            </li>
 
                 @include('includes.partials.lang')
             </li>
